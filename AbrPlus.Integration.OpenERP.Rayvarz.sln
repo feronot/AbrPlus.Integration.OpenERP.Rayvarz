@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenERP.Rayvarz", "OpenERP.Rayvarz\OpenERP.Rayvarz.csproj", "{032B7CF2-EACB-42CE-84A0-23842C920A8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenERP.Rayvarz.Service", "OpenERP.Rayvarz.Service\OpenERP.Rayvarz.Service.csproj", "{7320D33B-761E-4DCC-B850-6DE515309A15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenERP.Rayvarz.Repository", "OpenERP.Rayvarz.Repository\OpenERP.Rayvarz.Repository.csproj", "{09125DDA-C740-4E7D-BCA7-66E6F095D731}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenERP.Rayvarz.Api", "OpenERP.Rayvarz.Api\OpenERP.Rayvarz.Api.csproj", "{849398A4-6CE8-4E43-B1F1-DEE1545CF3D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{032B7CF2-EACB-42CE-84A0-23842C920A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032B7CF2-EACB-42CE-84A0-23842C920A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032B7CF2-EACB-42CE-84A0-23842C920A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032B7CF2-EACB-42CE-84A0-23842C920A8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7320D33B-761E-4DCC-B850-6DE515309A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7320D33B-761E-4DCC-B850-6DE515309A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7320D33B-761E-4DCC-B850-6DE515309A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7320D33B-761E-4DCC-B850-6DE515309A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09125DDA-C740-4E7D-BCA7-66E6F095D731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09125DDA-C740-4E7D-BCA7-66E6F095D731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09125DDA-C740-4E7D-BCA7-66E6F095D731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09125DDA-C740-4E7D-BCA7-66E6F095D731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{849398A4-6CE8-4E43-B1F1-DEE1545CF3D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{849398A4-6CE8-4E43-B1F1-DEE1545CF3D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{849398A4-6CE8-4E43-B1F1-DEE1545CF3D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{849398A4-6CE8-4E43-B1F1-DEE1545CF3D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D156F9B-B78C-4564-BA8E-C4F0AC22E3C3}
+	EndGlobalSection
+EndGlobal
