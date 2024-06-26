@@ -8,6 +8,7 @@ namespace AbrPlus.Integration.OpenERP.Rayvarz.Repository
     {
         public virtual DbSet<Customer> Accounts { get; set; }
 
+        //new changes
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>(entity =>
