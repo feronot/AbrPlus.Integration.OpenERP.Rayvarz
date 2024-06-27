@@ -7,15 +7,15 @@ namespace AbrPlus.Integration.OpenERP.Rayvarz.Settings
     [Serializable]
     public class RayvarzSetting : IFinancialSystemSetting
     {
-        [Display(GroupName = "گروه فرضی", Name = "نام تنشیمات تیکی", Description = "توضیحات تنشیمات تیکی")]
+        [Display(GroupName = "گروه فرضی", Name = "نام تنظیمات تیکی", Description = "توضیحات تنظیمات تیکی")]
         [UIHint("Checkbox")]
         public bool CheckBoxSetting { get; set; }
 
-        [Display(GroupName = "گروه فرضی 2", Name = "نام تنشیمات لیستی", Description = "توضیحات تنشیمات لیستی")]
+        [Display(GroupName = "گروه فرضی 2", Name = "نام تنظیمات لیستی", Description = "توضیحات تنظیمات لیستی")]
         [UIHint("Select")]
         public string DropdownSetting { get; set; }
 
-        [Display(GroupName = "گروه فرضی 2", Name = "نام تنشیمات متنی", Description = "توضیحات تنشیمات متنی")]
+        [Display(GroupName = "گروه فرضی 2", Name = "نام تنظیمات متنی", Description = "توضیحات تنظیمات متنی")]
         [UIHint("Text")]
         public string StringSetting { get; set; }
     }
