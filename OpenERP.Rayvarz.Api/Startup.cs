@@ -12,6 +12,7 @@ using AbrPlus.Integration.OpenERP.Rayvarz.Api.DI;
 using AbrPlus.Integration.OpenERP.Hosting.DI;
 using AbrPlus.Integration.OpenERP.Hosting.Hosting;
 using AbrPlus.Integration.OpenERP.DI;
+using System.Net.Http;
 
 namespace AbrPlus.Integration.OpenERP.Rayvarz.Api
 {
@@ -29,6 +30,7 @@ namespace AbrPlus.Integration.OpenERP.Rayvarz.Api
             services.GeneralConfigure(Configuration);
 
             services.Configure<RayvarzOption>(x => Configuration.GetSection("App").Bind(x));
+            services.AddHttpClient();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -38,6 +40,12 @@ namespace AbrPlus.Integration.OpenERP.Rayvarz.Api
             builder.RegisterModule<RepositoryDIModule>();
             builder.RegisterModule<ServiceDIModule>();
             builder.RegisterModule<ApiDIModule>();
+            //builder.RegisterInstance(new HttpClient()).As<HttpClient>().SingleInstance();
+            builder.Register(c =>
+            {
+                var factory = c.Resolve<IHttpClientFactory>();
+                return factory.CreateClient();
+            }).As<HttpClient>().InstancePerLifetimeScope();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
