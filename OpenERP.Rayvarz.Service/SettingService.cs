@@ -36,7 +36,7 @@ namespace AbrPlus.Integration.OpenERP.Rayvarz.Service
                 var companyService = scope.Resolve<IRayvarzCompanyService>();
                 var systemInfo = new SystemInfoBundle
                 {
-                    Name = "نرم افزار شرکت نمونه",
+                    Name = "شرکت مهندسی نرم افزار رایورز",
 
                 };
                 if (companyService.TryGetCompatibleVersion(out RayvarzVersion rayvarzVersion, out string currentVersion))
