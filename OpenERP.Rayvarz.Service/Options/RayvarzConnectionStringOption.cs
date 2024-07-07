@@ -24,7 +24,9 @@ namespace AbrPlus.Integration.OpenERP.Rayvarz.Service.Options
         {
             get
             {
+                _companyContext.SetCompanyId(100);
                 var option = _rayvarzCompanyOptionStorageService.GetCompanyConfig(_companyContext.CompanyId);
+                option.ConnecitonString = "";
                 var builder = new SqlConnectionStringBuilder(option.ConnecitonString);
                 builder.TrustServerCertificate = true;
                 return new ConnectionStringOption() { ConnectionString = builder.ConnectionString };

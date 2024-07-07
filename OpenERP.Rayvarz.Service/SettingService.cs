@@ -7,6 +7,8 @@ using AbrPlus.Integration.OpenERP.Api.DataContracts;
 using AbrPlus.Integration.OpenERP.Settings;
 using AbrPlus.Integration.OpenERP.Helpers;
 using AbrPlus.Integration.OpenERP.Service.Configuration;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace AbrPlus.Integration.OpenERP.Rayvarz.Service
 {
@@ -17,40 +19,53 @@ namespace AbrPlus.Integration.OpenERP.Rayvarz.Service
         private readonly IRayvarzCompanyOptionStorageService _rayvarzCompanyOptionStorageService;
         private readonly IConnectionStringValidator _connectionStringValidator;
         private readonly ILogger<SettingService> _logger;
+        private readonly HttpClient _httpClient;
         public SettingService(ILifetimeScope lifetimeScope,
                                IRayvarzCompanySettingService rayvarzCompanySettingService,
                                IRayvarzCompanyOptionStorageService rayvarzCompanyOptionStorageService,
                                IConnectionStringValidator connectionStringValidator,
-                               ILogger<SettingService> logger)
+                               ILogger<SettingService> logger,
+                               HttpClient httpClient)
         {
             _lifetimeScope = lifetimeScope;
             _rayvarzCompanySettingService = rayvarzCompanySettingService;
             _rayvarzCompanyOptionStorageService = rayvarzCompanyOptionStorageService;
             _connectionStringValidator = connectionStringValidator;
             _logger = logger;
+            _httpClient = httpClient;
         }
         public SystemInfoBundle GetInfo(int companyId)
         {
-            using (var scope = _lifetimeScope.BeginLifetimeScopeForCompany(companyId))
-            {
-                var companyService = scope.Resolve<IRayvarzCompanyService>();
-                var systemInfo = new SystemInfoBundle
-                {
-                    Name = "شرکت مهندسی نرم افزار رایورز",
+            var response = _httpClient.GetAsync($"https://randomuser.me/api/?nat=ir&format=json&results=10").Result;
+            response.EnsureSuccessStatusCode();
 
-                };
-                if (companyService.TryGetCompatibleVersion(out RayvarzVersion rayvarzVersion, out string currentVersion))
-                {
-                    systemInfo.Version = currentVersion;
-                    systemInfo.VersionIsSupported = true;
-                }
-                else
-                {
-                    systemInfo.Version = currentVersion;
-                    systemInfo.VersionIsSupported = false;
-                }
-                return systemInfo;
-            }
+            var content = response.Content.ReadAsStringAsync().Result;
+            dynamic jsonResponse = JsonConvert.DeserializeObject(content);
+            return jsonResponse;
+
+
+
+
+            //using (var scope = _lifetimeScope.BeginLifetimeScopeForCompany(companyId))
+            //{
+            //    var companyService = scope.Resolve<IRayvarzCompanyService>();
+            //    var systemInfo = new SystemInfoBundle
+            //    {
+            //        Name = "شرکت مهندسی نرم افزار رایورز",
+
+            //    };
+            //    if (companyService.TryGetCompatibleVersion(out RayvarzVersion rayvarzVersion, out string currentVersion))
+            //    {
+            //        systemInfo.Version = currentVersion;
+            //        systemInfo.VersionIsSupported = true;
+            //    }
+            //    else
+            //    {
+            //        systemInfo.Version = currentVersion;
+            //        systemInfo.VersionIsSupported = false;
+            //    }
+            //    return systemInfo;
+            //}
         }
 
         public SettingsTestResult TestFinancialSystemSettings(FinancialSystemSettings settings)
